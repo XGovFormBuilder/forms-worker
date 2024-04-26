@@ -1,11 +1,8 @@
 name: publish image
 
 on:
-  release:
-    types: [published]
-    branches:
-      main
-
+  push:
+    tags: '*'
 
 jobs:
 
@@ -30,7 +27,7 @@ jobs:
 
       - name: release details
         run: |
-          echo "Name: ${{ github.event.release.name }} Description: ${{ github.event.release.body }} ${{github.event}} ${{GITHUB_REF}}"
+          echo "Name: ${{GITHUB_REF}}"
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
