@@ -2,8 +2,7 @@ name: publish image
 
 on:
   push:
-    tags:
-    - '*'
+    tags: ['*']
 
 jobs:
 
