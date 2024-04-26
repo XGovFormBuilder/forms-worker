@@ -24,6 +24,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: release details
         run: |
           echo "Name: ${{ github.event.release.name }} Description: ${{ github.event.release.body }} ${{github.event}}"
