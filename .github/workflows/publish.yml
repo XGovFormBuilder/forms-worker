@@ -4,7 +4,10 @@ on:
   release:
     types:
       - published
-      - released
+    branches:
+      main
+    
+
 jobs:
 
   publish:
