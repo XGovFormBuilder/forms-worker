@@ -1,0 +1,38 @@
+{
+  "name": "forms-queue",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "worker"
+  ],
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "scripts": {
+    "worker": "yarn workspace @forms-queue/worker",
+    "lint": "yarn workspaces foreach run lint",
+    "test": "yarn workspaces foreach run test",
+    "release": "semantic-release"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.6",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.0.3",
+    "semantic-release": "^22.0.6"
+  },
+  "packageManager": "yarn@4.0.2",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "handlebars": "^4.7.8"
+  },
+  "release": {
+    "branches": [
+      "main",
+      "+([0-9])?(.{+([0-9]),x}).x"
+    ]
+  }
+}

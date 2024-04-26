@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  worker:
+    depends_on:
+      - postgres
+    build:
+      context: .
+      dockerfile: worker/Dockerfile
+    environment:
+      QUEUE_URL: postgres://user:root@postgres:5432/queue
+  postgres:
+    container_name: postgres
+    image: "postgres:16"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: queue
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: user

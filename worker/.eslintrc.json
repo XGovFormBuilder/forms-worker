@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "node": true
+  },
+  "ignorePatterns": [
+    "node_modules/**",
+    "dist/**"
+  ]
+}

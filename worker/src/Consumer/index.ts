@@ -1,0 +1,1 @@
+export { getConsumer } from "./getConsumer";
