@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Test and build
+name: Test
 
 on:
   push:
@@ -19,31 +19,3 @@ jobs:
         run: yarn install
       - name: test
         run: yarn worker test
-
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-        
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      -
-        name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      -
-          name: Build and push
-          uses: docker/build-push-action@v5
-          with:
-            context: .
-            file: worker/Dockerfile
-            push: false
-            tags: xgovformbuilder/digital-form-builder-worker
