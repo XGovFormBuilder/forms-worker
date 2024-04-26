@@ -1,9 +1,13 @@
 name: publish image
 
-on:
-  push:
-    tags: ['*']
 
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: The version to tag the build with
+        required: true
+        type: string
 jobs:
 
   publish:
@@ -27,7 +31,7 @@ jobs:
 
       - name: release details
         run: |
-          echo "Name: ${{GITHUB_REF}}"
+          echo "tag: ${{inputs.version}}"
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
