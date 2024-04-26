@@ -22,11 +22,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/cli@npm:^7.22.10":
-  version: 7.23.4
-  resolution: "@babel/cli@npm:7.23.4"
+"@babel/cli@npm:^7.24.1":
+  version: 7.24.1
+  resolution: "@babel/cli@npm:7.24.1"
   dependencies:
-    "@jridgewell/trace-mapping": "npm:^0.3.17"
+    "@jridgewell/trace-mapping": "npm:^0.3.25"
     "@nicolo-ribaudo/chokidar-2": "npm:2.1.8-no-fsevents.3"
     chokidar: "npm:^3.4.0"
     commander: "npm:^4.0.1"
@@ -45,7 +45,7 @@ __metadata:
   bin:
     babel: ./bin/babel.js
     babel-external-helpers: ./bin/babel-external-helpers.js
-  checksum: f71bc378f62dd19983adc8dae4ee33cd44ac7d8ea3224709f787f290e0c3a4b8a36dad76d672b3479de2b9f524e55b4bb12a2296154c73134ba111114a15779c
+  checksum: 44c069fe331a624936bbe157c352674733aacd88379b2e6d7bd82775210fb7480faa547702051d52eb6eff3d7a52c768f53f775524ea691a91b9e5343e4626bc
   languageName: node
   linkType: hard
 
@@ -1475,7 +1475,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@forms-queue/worker@workspace:worker"
   dependencies:
-    "@babel/cli": "npm:^7.22.10"
+    "@babel/cli": "npm:^7.24.1"
     "@babel/core": "npm:^7.22.5"
     "@babel/preset-env": "npm:^7.22.5"
     "@babel/preset-typescript": "npm:^7.23.3"
@@ -1837,6 +1837,16 @@ __metadata:
     "@jridgewell/resolve-uri": "npm:^3.1.0"
     "@jridgewell/sourcemap-codec": "npm:^1.4.14"
   checksum: 4ae1c862ca0a12e1fb08ee48bb2fd65667a5258a97cc37a8708ff1e1d6a351e6a1166f2f806a9d9b9680f841da9fbde35fe6bd971eee3bdf1c10ea669ba5707a
+  languageName: node
+  linkType: hard
+
+"@jridgewell/trace-mapping@npm:^0.3.25":
+  version: 0.3.25
+  resolution: "@jridgewell/trace-mapping@npm:0.3.25"
+  dependencies:
+    "@jridgewell/resolve-uri": "npm:^3.1.0"
+    "@jridgewell/sourcemap-codec": "npm:^1.4.14"
+  checksum: 3d1ce6ebc69df9682a5a8896b414c6537e428a1d68b02fcc8363b04284a8ca0df04d0ee3013132252ab14f2527bc13bea6526a912ecb5658f0e39fd2860b4df4
   languageName: node
   linkType: hard
 
