@@ -40,7 +40,11 @@ jobs:
 
   publish:
     needs: [release]
-    uses: ./.github/workflows/publish.yml
-    with:
-      version: ${{ needs.release.outputs.tag_version.outputs.new_tag_version }}
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo version
+        run: echo "${{ needs.release.output.new_tag_version}}"
+#    uses: ./.github/workflows/publish.yml
+#    with:
+#      version: ${{ needs.release.outputs.tag_version.outputs.new_tag_version }}
+#    secrets: inherit
