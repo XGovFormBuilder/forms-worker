@@ -37,4 +37,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Version
-        run: echo "The version is ${{ steps.release.outputs.new_tag_version }}"
+        run: echo "The version is ${{ steps.tag_version.outputs.new_tag_version }}"
