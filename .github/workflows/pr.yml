@@ -1,0 +1,14 @@
+# Workflow to run on pull requests
+
+name: Pull request QA
+
+on: [pull_request]
+
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+
+  build:
+    uses: ./.github/workflows/docker-build.yml
+    with:
+      push: false

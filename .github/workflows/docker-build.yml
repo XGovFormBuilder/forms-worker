@@ -1,16 +1,19 @@
-name: publish image
-
+name: Docker build
 
 on:
   workflow_call:
     inputs:
+      push:
+        description: Whether or not to push to ghcr
+        default: false
+        type: boolean
       version:
         description: The version to tag the build with
-        required: true
+        required: false
         type: string
-jobs:
 
-  publish:
+jobs:
+  docker-build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -31,13 +34,14 @@ jobs:
 
       - name: release details
         run: |
-          echo "tag: ${{inputs.version}}"
+          echo "tag: ${{inputs.version}}, push: ${{inputs.push}}"
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
           file: worker/Dockerfile
-          push: true
+          push: ${{inputs.push}}
           tags: |
-            ghcr.io/xgovformbuilder/forms-worker:${{inputs.version }}
+            ghcr.io/xgovformbuilder/forms-worker:${{ inputs.version }}
             ghcr.io/xgovformbuilder/forms-worker:latest
