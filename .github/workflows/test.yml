@@ -1,12 +1,6 @@
 name: Test
 
-on:
-  workflow_call:
-    inputs:
-      version:
-        description: The version to tag the build with
-        required: true
-        type: string
+on: [workflow_call]
 
 jobs:
   test:
