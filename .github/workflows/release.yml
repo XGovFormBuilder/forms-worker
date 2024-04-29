@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Setup node env 🏗
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           check-latest: true
@@ -29,7 +29,6 @@ jobs:
           export NEXT_TAG_VERSION=$(npx semantic-release --dry-run | grep 'The next release version is' | sed -E 's/.* ([[:digit:].]+)$/\1/')
           echo "new_tag_version=${NEXT_TAG_VERSION}" >> $GITHUB_OUTPUT
     
-          
 
       - name: Release 🚀
         run: yarn release
@@ -38,3 +37,10 @@ jobs:
 
       - name: Version
         run: echo "The version is ${{ steps.tag_version.outputs.new_tag_version }}"
+
+  publish:
+    needs: [release]
+    uses: ./.github/workflows/publish.yml
+    with:
+      version: ${{ steps.tag_version.outputs.new_tag_version }}
+    secrets: inherit
