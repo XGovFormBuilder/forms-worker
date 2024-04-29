@@ -38,4 +38,6 @@ jobs:
           context: .
           file: worker/Dockerfile
           push: false
-          tags: xgovformbuilder/digital-form-builder-worker
+          tags: |
+            ghcr.io/xgovformbuilder/digital-form-worker:${{inputs.version }}
+            ghcr.io/xgovformbuilder/digital-form-worker:latest
