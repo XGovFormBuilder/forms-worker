@@ -47,7 +47,7 @@ jobs:
         run: echo "The version is ${{ steps.tag_version.outputs.new_tag_version }}"
 
   publish:
-    needs: [release]
+    needs: [test, release]
     uses: ./.github/workflows/docker-build.yml
     secrets: inherit
     with:
