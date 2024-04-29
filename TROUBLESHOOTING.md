@@ -67,9 +67,8 @@ Columns/values to note are
     }
     ```
 - `output`: the output of the job. This will contain the reference number, or the error message if the job has failed
-- `keepuntil`: the time until the job will be kept in the table. After this time, the job will be moved to `pgboss.archive`. If you need more time to resolve the issue, you can update this value to a later time.
-
-
+- `keepuntil`: the time until the job will be kept in the table as long as the job has not completed. After this time, the job will be moved to `pgboss.archive`. 
+- `startafter`: When to run the job. Set this to `now()` to retry jobs immediately
 
 ## Finding jobs
 To find jobs that have failed, run the following query:
@@ -92,7 +91,8 @@ It is recommended you run every query in a transaction, so that you can abort th
     set state = 'created',
     completedon = null,
     retrycount = 0,
-    state = 'created'
+    -- set startafter = now() to retry jobs immediately
+    startafter = now() 
     where id = '<id>';
     
     -- Run the query again, to see if you've made the correct changes
@@ -142,14 +142,15 @@ where `0` is the index of the question, and `answer` is the key of the answer. H
 
 
 ### Retry a job
-If a job has failed, and you want to retry it, you can update the job to `created` state, and reset the `retrycount` to 0.
+If a job has failed, and you want to retry it, you set the `retrycount` to 0, and set startafter to `now()` to retry immediately.
 
 ```postgresql
     update pgboss.job
-    set state = 'created',
+    set state = 'retry',
     completedon = null,
     retrycount = 0,
-    state = 'created'
+    -- set startafter = now() to retry jobs immediately
+    startafter = now()
 --  output = null  
     where id = '<id>';
 ```

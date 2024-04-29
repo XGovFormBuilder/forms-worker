@@ -1,1 +1,1 @@
-create database notarial;
+-- Add any additional local database setups here
