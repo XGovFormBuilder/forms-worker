@@ -51,5 +51,5 @@ jobs:
     uses: ./.github/workflows/docker-build.yml
     secrets: inherit
     with:
-      version: ${{ needs.release.outputs.new_tag_version}}
+      version: ${{ needs.release.outputs.new_tag_version }}
       push: true

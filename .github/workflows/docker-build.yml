@@ -6,6 +6,7 @@ on:
       push:
         description: Whether or not to push to ghcr
         default: false
+        required: false
         type: boolean
       version:
         description: The version to tag the build with
