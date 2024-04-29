@@ -37,7 +37,7 @@ jobs:
         with:
           context: .
           file: worker/Dockerfile
-          push: false
+          push: true
           tags: |
             ghcr.io/xgovformbuilder/forms-worker:${{inputs.version }}
             ghcr.io/xgovformbuilder/forms-worker:latest
