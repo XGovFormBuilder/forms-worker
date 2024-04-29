@@ -37,12 +37,21 @@ jobs:
         run: |
           echo "tag: ${{inputs.version}}, push: ${{inputs.push}}"
 
-      - name: Build and push
+      - name: Build only
+        if: ${{inputs.push == false}}
         uses: docker/build-push-action@v5
         with:
           context: .
           file: worker/Dockerfile
-          push: ${{inputs.push}}
+          push: false
+
+      - name: Build and push
+        if: ${{inputs.push == true}}
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: worker/Dockerfile
+          push: true
           tags: |
             ghcr.io/xgovformbuilder/forms-worker:${{ inputs.version }}
             ghcr.io/xgovformbuilder/forms-worker:latest
